@@ -2,11 +2,14 @@
 
 class Api{
 	
-	private static $_KEY = "ec815383-480b-4505-9e07-5bbc93e6372c";
+	private static $_KEY;
 	private $ch;
 	
 	public function __construct(){
-
+		$monFichier = fopen("C:\apiKey.txt", 'r+');
+		$apiKey = fgets($monFichier);
+		fclose($monFichier);
+		Api::$_KEY = $apiKey;
 	}
 	
 	private function initCurl($url){
